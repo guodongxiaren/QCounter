@@ -15,8 +15,8 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     int getLevel(const QChar& oper);
-    bool greater(const QChar& oper1,const QChar& oper2);
 
+    void toPostfix();
 private slots:
     void on_btn0_clicked();
 
@@ -53,6 +53,8 @@ private slots:
     void on_btnLeft_clicked();
 
     void on_btnRight_clicked();
+
+    void on_btnClear_clicked();
 
 private:
     Ui::MainWindow *ui;

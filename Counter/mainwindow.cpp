@@ -146,76 +146,87 @@ void MainWindow::on_btnDivi_clicked()
     else
         ui->lineEdit->setText("/");
 }
-//得到运算符的优先级
-int MainWindow::getLevel(const QChar &oper)
-{
-    int level=0;
-    switch(oper.cell())
-    {
-    case '#':level = 0;break;
-    case ')':level = 1;break;
-    case '+':
-    case '-':level = 2;break;
-    case '*':
-    case '/':
-    case '%':level = 3;break;
-    case '(':level = 4;break;
-    }
-    return level;
-}
-/*比较两个运算符优先级大小
- *若大于返回true,小于等于返回false
- */
-bool MainWindow::greater(const QChar& oper1, const QChar& oper2)
-{
-    if(getLevel(oper1)>getLevel(oper2))
-        return true;
-    return false;
-}
-//等于号的槽函数。实现最主要功能
-void MainWindow::on_btnEqual_clicked()
-{
-    QString exp = ui->lineEdit->text();
-    QString::iterator it;
-    QChar tem;
-    for(it=exp.begin();it<exp.end();++it)
-    {
-        if(it->isDigit()||it->cell()=='.')
-           {
-             qDebug()<<*it<<"if";
-            expStack.push(*it);}
-        else if(greater(*it,opStack.top()))
-           { opStack.push(*it); qDebug()<<*it<<"else if";
-        }
-        else
-        {
-            qDebug()<<*it<<"else";
-            tem = *it;
-            expStack.push(*(++it));
-            expStack.push(tem); qDebug()<<*it<<"else2";
-        }
-    }
-    while(!opStack.isEmpty())
-    {
-        QChar c = opStack.pop();qDebug()<<c<<"wh";
-        if(c.cell()!=')'&&c.cell()!='('&&c.cell()!='#')
-        expStack.push(c);
-    }
-    QString s;
-    for(it=expStack.begin();it!=expStack.end();++it)
-    {
-        s+=*it;
-    }
-    ui->lineEdit->setText(s);
-}
 void MainWindow::on_btnLeft_clicked()
 {
     QString s = ui->lineEdit->text();
-    ui->lineEdit->setText(s+"(");
+    if(s!="0")
+        ui->lineEdit->setText(s+"(");
+    else
+        ui->lineEdit->setText("(");
 }
 
 void MainWindow::on_btnRight_clicked()
 {
     QString s = ui->lineEdit->text();
     ui->lineEdit->setText(s+")");
+}
+//得到运算符的优先级
+int MainWindow::getLevel(const QChar &oper)
+{
+    switch(oper.cell())
+    {
+    case '#':
+    case '(':return 0;
+    case '+':
+    case '-':return 1;
+    case '*':
+    case '/':
+    case '%':return 2;
+    }
+    return 0;
+}
+//转换为后缀表达式，实现最主要功能
+void MainWindow::toPostfix()
+{
+    QString exp = ui->lineEdit->text(),postfix;
+    //QString exp = "0.3/(5*2+1)",postfix;
+
+    int j=0;
+    qDebug()<<j;
+    for(int i=0;i<exp.length();i++)
+    {qDebug()<<i<<exp[i];
+        if(exp[i].isDigit()||exp[i]=='.')
+        {
+            postfix.push_back(exp[i]);
+        }
+        else if(exp[i]=='(')
+        {
+            opStack.push(exp[i]);
+        }
+        else if(exp[i]==')')
+        {
+            while(opStack.top()!='(')
+            {
+                postfix.push_back(opStack.pop());
+            }
+            opStack.pop();
+        }
+        else if(getLevel(exp[i])>getLevel(opStack.top()))
+            opStack.push(exp[i]);
+        else
+        {
+            while(getLevel(exp[i])<=getLevel(opStack.top()))
+                postfix.push_back(opStack.pop());
+            opStack.push(exp[i]);
+        }
+    }
+    while(!opStack.isEmpty())
+    {
+        QChar c = opStack.pop();qDebug()<<c<<"wh";
+        postfix.push_back(c);
+    }
+    qDebug()<<postfix;
+}
+//等于号的槽函数。
+void MainWindow::on_btnEqual_clicked()
+{
+    toPostfix();
+}
+
+
+void MainWindow::on_btnClear_clicked()
+{
+    QChar a('a');
+    if(a=='a')
+        qDebug()<<"YES";
 }
