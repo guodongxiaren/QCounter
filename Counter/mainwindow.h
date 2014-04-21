@@ -2,7 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-
+#include <QStack>
 namespace Ui {
 class MainWindow;
 }
@@ -14,7 +14,8 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
+    int getLevel(const QChar& oper);
+    bool greater(const QChar& oper1,const QChar& oper2);
 
 private slots:
     void on_btn0_clicked();
@@ -47,8 +48,16 @@ private slots:
 
     void on_btnDivi_clicked();
 
+    void on_btnEqual_clicked();
+
+    void on_btnLeft_clicked();
+
+    void on_btnRight_clicked();
+
 private:
     Ui::MainWindow *ui;
+    QStack<QChar> expStack;//后缀表达式栈
+    QStack<QChar> opStack;//运算符栈
 };
 
 #endif // MAINWINDOW_H
