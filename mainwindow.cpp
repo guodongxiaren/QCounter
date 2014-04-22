@@ -202,14 +202,19 @@ void MainWindow::toPostfix()
             opStack.pop();
         }
         else if(getLevel(exp[i])>getLevel(opStack.top()))
+        {
+            postfix.push_back(' ');
             opStack.push(exp[i]);
+        }
         else
         {
+            postfix.push_back(' ');
             while(getLevel(exp[i])<=getLevel(opStack.top()))
                 postfix.push_back(opStack.pop());
             opStack.push(exp[i]);
         }
     }
+    //postfix.push_back(' ');
     while(!opStack.isEmpty())
     {
         QChar c = opStack.pop();qDebug()<<c<<"wh";
@@ -217,10 +222,12 @@ void MainWindow::toPostfix()
     }
     qDebug()<<postfix;
 }
+
 //等于号的槽函数。
 void MainWindow::on_btnEqual_clicked()
 {
     toPostfix();
+
 }
 
 
