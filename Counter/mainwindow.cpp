@@ -226,7 +226,7 @@ void MainWindow::on_btnEqual_clicked()
 
 void MainWindow::on_btnClear_clicked()
 {
-    QChar a('a');
-    if(a=='a')
-        qDebug()<<"YES";
+    opStack.clear();
+    expStack.clear();
+    ui->lineEdit->setText("0");
 }
