@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->setText("0");//设置初试文本为0
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     opStack.push('#');
+
 }
 
 MainWindow::~MainWindow()
