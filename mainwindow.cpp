@@ -20,7 +20,11 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_btn0_clicked()
 {
-    ui->lineEdit->setText("0");
+    QString s = ui->lineEdit->text();
+    if(s!="0")
+        ui->lineEdit->setText(s+"0");
+    else
+        ui->lineEdit->setText("0");
 }
 
 void MainWindow::on_btn1_clicked()
@@ -178,7 +182,7 @@ int MainWindow::getLevel(const QChar &oper)
 //转换为后缀表达式，实现最主要功能
 void MainWindow::toPostfix()
 {
-    QString exp = ui->lineEdit->text(),postfix;
+    QString exp = ui->lineEdit->text();
     //QString exp = "0.3/(5*2+1)",postfix;
 
     int j=0;
@@ -195,26 +199,26 @@ void MainWindow::toPostfix()
         }
         else if(exp[i]==')')
         {
+            postfix.push_back(' ');
             while(opStack.top()!='(')
             {
-                postfix.push_back(opStack.pop());
+                postfix.push_back(opStack.pop());qDebug()<<postfix;
             }
             opStack.pop();
         }
         else if(getLevel(exp[i])>getLevel(opStack.top()))
         {
-            postfix.push_back(' ');
+            postfix.push_back(' ');qDebug()<<postfix;
             opStack.push(exp[i]);
         }
         else
         {
-            postfix.push_back(' ');
+            postfix.push_back(' ');qDebug()<<postfix;
             while(getLevel(exp[i])<=getLevel(opStack.top()))
                 postfix.push_back(opStack.pop());
             opStack.push(exp[i]);
         }
     }
-    //postfix.push_back(' ');
     while(!opStack.isEmpty())
     {
         QChar c = opStack.pop();qDebug()<<c<<"wh";
@@ -222,12 +226,46 @@ void MainWindow::toPostfix()
     }
     qDebug()<<postfix;
 }
+//
+void MainWindow::evaluation()
+{
+    QString tem;
+    QStack<double> ans;
+    for(int i=0;i<postfix.size();i++)
+    {
+        if(postfix[i].isDigit()||postfix[i]=='.')
+            tem.push_back(postfix[i]);
+        else if(!tem.isEmpty()&&postfix[i]==' ')
+        {
+            ans.push(tem.toDouble());
+            tem.clear();
+            qDebug()<<ans.top()<<tem.isEmpty();
+        }
+        else if(postfix[i]!='#')
+        {
+            double a,b;
+            a=ans.pop();
+            b=ans.pop();
+            switch(postfix[i].cell())
+            {
+            case '+':ans.push(a+b);break;
+            case '-':ans.push(a-b);break;
+            case '*':ans.push(a*b);break;
+            case '/':ans.push(b/a);break;
+            case '%':ans.push((int)a%(int)b);break;
+            }
+            //qDebug()<<ans.top();
+        }
 
+    }
+    //qDebug()<<ans.top();
+    ui->lineEdit->setText(QString::number(ans.top()));
+}
 //等于号的槽函数。
 void MainWindow::on_btnEqual_clicked()
 {
     toPostfix();
-
+    evaluation();
 }
 
 

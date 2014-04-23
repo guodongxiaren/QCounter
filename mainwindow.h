@@ -14,9 +14,9 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-    int getLevel(const QChar& oper);
-
-    void toPostfix();
+    int getLevel(const QChar& oper);//得到运算符等级
+    void toPostfix();//转换成后缀表达式
+    void evaluation();//求值
 private slots:
     void on_btn0_clicked();
 
@@ -60,6 +60,7 @@ private:
     Ui::MainWindow *ui;
     QStack<QChar> expStack;//后缀表达式栈
     QStack<QChar> opStack;//运算符栈
+    QString postfix;
 };
 
 #endif // MAINWINDOW_H
