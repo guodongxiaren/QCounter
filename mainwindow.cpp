@@ -8,20 +8,28 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->lineEdit->setEnabled(false);
     ui->lineEdit->setAlignment(Qt::AlignRight);//设置显示居右
-    ui->lineEdit->setText("0");//设置初试文本为0
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
-    opStack.push('#');
+    ui->lineEdit->setText("0");//设置初试文本为0
+    init();
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+//初始化操作.不仅开头调用，每次计算完结果都会调用。
+void MainWindow::init()
+{
+    if(!expStack.isEmpty())
+        expStack.clear();
+    if(!opStack.isEmpty())
+        opStack.clear();
+    opStack.push('#');
+}
 void MainWindow::on_btn0_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(opStack.top()!='#')
         ui->lineEdit->setText(s+"0");
     else
         ui->lineEdit->setText("0");
@@ -208,7 +216,7 @@ void MainWindow::toPostfix()
         }
         else if(getLevel(exp[i])>getLevel(opStack.top()))
         {
-            postfix.push_back(' ');qDebug()<<postfix;
+            postfix.push_back(' ');qDebug()<<"postfix";
             opStack.push(exp[i]);
         }
         else
@@ -219,9 +227,10 @@ void MainWindow::toPostfix()
             opStack.push(exp[i]);
         }
     }
-    while(!opStack.isEmpty())
+    while(opStack.top()!='#')
     {
-        QChar c = opStack.pop();qDebug()<<c<<"wh";
+        QChar c = opStack.pop();
+        postfix.push_back(' ');
         postfix.push_back(c);
     }
     qDebug()<<postfix;
@@ -233,28 +242,32 @@ void MainWindow::evaluation()
     QStack<double> ans;
     for(int i=0;i<postfix.size();i++)
     {
+        qDebug()<<postfix[i]<<i;
         if(postfix[i].isDigit()||postfix[i]=='.')
             tem.push_back(postfix[i]);
-        else if(!tem.isEmpty()&&postfix[i]==' ')
+        else if(postfix[i]==' ')
         {
-            ans.push(tem.toDouble());
-            tem.clear();
+            if(!tem.isEmpty())
+            {
+                ans.push(tem.toDouble());
+                tem.clear();
+            }
             qDebug()<<ans.top()<<tem.isEmpty();
         }
-        else if(postfix[i]!='#')
+        else
         {
             double a,b;
-            a=ans.pop();
-            b=ans.pop();
+            a=ans.pop();qDebug()<<a<<"a";
+            b=ans.pop();qDebug()<<b<<"b";
             switch(postfix[i].cell())
             {
-            case '+':ans.push(a+b);break;
-            case '-':ans.push(a-b);break;
-            case '*':ans.push(a*b);break;
+            case '+':ans.push(b+a);break;
+            case '-':ans.push(b-a);break;
+            case '*':ans.push(b*a);break;
             case '/':ans.push(b/a);break;
             case '%':ans.push((int)a%(int)b);break;
             }
-            //qDebug()<<ans.top();
+            qDebug()<<ans.top()<<"top";
         }
 
     }
@@ -266,12 +279,11 @@ void MainWindow::on_btnEqual_clicked()
 {
     toPostfix();
     evaluation();
+    init();
 }
 
 
 void MainWindow::on_btnClear_clicked()
 {
-    opStack.clear();
-    expStack.clear();
-    ui->lineEdit->setText("0");
+    init();
 }

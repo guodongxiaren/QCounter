@@ -14,6 +14,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    void init();
     int getLevel(const QChar& oper);//得到运算符等级
     void toPostfix();//转换成后缀表达式
     void evaluation();//求值
