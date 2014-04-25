@@ -6,3 +6,4 @@ CoderCounter
 * Qt5 
 * MinGw4.8
 
+更多详情请看本项目[Wiki](../../wiki)
