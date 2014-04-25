@@ -61,7 +61,8 @@ private:
     Ui::MainWindow *ui;
     QStack<QChar> expStack;//后缀表达式栈
     QStack<QChar> opStack;//运算符栈
-    QString postfix;
+    QString postfix;//存储后缀表达式
+    bool complete;//表达式是否计算完成
 };
 
 #endif // MAINWINDOW_H

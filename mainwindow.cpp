@@ -25,104 +25,136 @@ void MainWindow::init()
     if(!opStack.isEmpty())
         opStack.clear();
     opStack.push('#');
+    complete=true;
 }
 void MainWindow::on_btn0_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(opStack.top()!='#')
+    if(!complete)
         ui->lineEdit->setText(s+"0");
     else
+    {
         ui->lineEdit->setText("0");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn1_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"1");
     else
+    {
         ui->lineEdit->setText("1");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn2_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"2");
     else
+    {
         ui->lineEdit->setText("2");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn3_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"3");
     else
+    {
         ui->lineEdit->setText("3");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn4_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"4");
     else
+    {
         ui->lineEdit->setText("4");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn5_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"5");
     else
+    {
         ui->lineEdit->setText("5");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn6_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"6");
     else
+    {
         ui->lineEdit->setText("6");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn7_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"7");
     else
+    {
         ui->lineEdit->setText("7");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn8_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"8");
     else
+    {
         ui->lineEdit->setText("8");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btn9_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"9");
     else
+    {
         ui->lineEdit->setText("9");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btnDot_clicked()
 {
-    //如果是小数点,那么不考虑前导符为0的情况
+    //如果是小数点,那么不能以小数点打头
     QString s = ui->lineEdit->text();
-    ui->lineEdit->setText(s+".");
+    if(!complete)
+        ui->lineEdit->setText(s+".");
 }
-
+//加号和减号应做特殊处理。因为也可以理解为正负号
 void MainWindow::on_btnAdd_clicked()
 {
     QString s = ui->lineEdit->text();
@@ -144,33 +176,38 @@ void MainWindow::on_btnSub_clicked()
 void MainWindow::on_btnMuti_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"*");
     else
+    {
         ui->lineEdit->setText("*");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btnDivi_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"/");
-    else
-        ui->lineEdit->setText("/");
 }
 void MainWindow::on_btnLeft_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
+    if(!complete)
         ui->lineEdit->setText(s+"(");
     else
+    {
         ui->lineEdit->setText("(");
+        complete = false;
+    }
 }
 
 void MainWindow::on_btnRight_clicked()
 {
     QString s = ui->lineEdit->text();
-    ui->lineEdit->setText(s+")");
+    if(!complete)
+        ui->lineEdit->setText(s+")");
 }
 //得到运算符的优先级
 int MainWindow::getLevel(const QChar &oper)
