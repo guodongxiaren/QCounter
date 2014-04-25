@@ -9,7 +9,6 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 * Qt5
 * MinGw4.8(Windows)
  
-More 
 <br>
 <br>
 <br>
