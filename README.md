@@ -11,9 +11,10 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 <br>
 <br>
 <br>
+
 <a name="Ch"/>
 QCounter
-============
+=============
 简体中文|[English](#En)<br>
 
 一个计算器，使用Qt开发，陆续会增加更多功能。
