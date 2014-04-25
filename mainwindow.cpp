@@ -154,6 +154,7 @@ void MainWindow::on_btnDot_clicked()
     if(!complete)
         ui->lineEdit->setText(s+".");
 }
+///////////////////////////////////////////////////
 //加号和减号应做特殊处理。因为也可以理解为正负号
 void MainWindow::on_btnAdd_clicked()
 {
@@ -172,7 +173,7 @@ void MainWindow::on_btnSub_clicked()
     else
         ui->lineEdit->setText("-");
 }
-
+//////////////////////////////////////////////////////
 void MainWindow::on_btnMuti_clicked()
 {
     QString s = ui->lineEdit->text();
