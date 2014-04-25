@@ -8,10 +8,12 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 ##Development Enviroment
 * Qt5
 * MinGw4.8(Windows)
+ 
+More 
 <br>
 <br>
 <br>
-
+<b>Please browse this project's [Wiki](../../wiki) for more details.<b>
 <a name="Ch"/>
 QCounter
 =============
@@ -23,4 +25,4 @@ QCounter
 * Qt5 
 * MinGw4.8(Windows)
 
-更多详情请看本项目[Wiki](../../wiki)
+<b>更多详情请看本项目[Wiki](../../wiki)<b>
