@@ -325,3 +325,23 @@ void MainWindow::on_btnClear_clicked()
 {
     init();
 }
+
+
+void MainWindow::on_btnBack_clicked()
+{
+    QString s = ui->lineEdit->text();
+    s=s.mid(0,s.size()-1);
+    ui->lineEdit->setText(s);
+}
+
+void MainWindow::on_btnPer_clicked()
+{
+    QString s = ui->lineEdit->text();
+    if(!complete)
+        ui->lineEdit->setText(s+"9");
+    else
+    {
+        ui->lineEdit->setText("9");
+        complete = false;
+    }
+}

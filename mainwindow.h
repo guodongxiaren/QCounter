@@ -57,6 +57,10 @@ private slots:
 
     void on_btnClear_clicked();
 
+    void on_btnBack_clicked();
+
+    void on_btnPer_clicked();
+
 private:
     Ui::MainWindow *ui;
     QStack<QChar> expStack;//后缀表达式栈
