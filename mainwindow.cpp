@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     ui->lineEdit->setText("0");//设置初试文本为0
     init();
+
 }
 
 MainWindow::~MainWindow()
