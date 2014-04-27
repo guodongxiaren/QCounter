@@ -10,7 +10,7 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 * MinGw4.8(Windows)
 
 
-<b>Please browse this project's [Wiki](../../wiki) for more details.<b>
+<b>Please browse this project's [Wiki](https://github.com/guodongxiaren/QCounter/wiki) for more details.<b>
 <br>
 <br>
 <br>
@@ -26,4 +26,4 @@ QCounter
 * Qt5 
 * MinGw4.8(Windows)
 
-<b>更多详情请看本项目[Wiki](../../wiki)。<b>
+<b>更多详情请看本项目[Wiki](https://github.com/guodongxiaren/QCounter/wiki)。<b>
