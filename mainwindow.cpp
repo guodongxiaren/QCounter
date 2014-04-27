@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    this->setWindowIcon(QIcon("icon.ico"));
     ui->setupUi(this);
     ui->lineEdit->setEnabled(false);
     ui->lineEdit->setAlignment(Qt::AlignRight);//设置显示居右

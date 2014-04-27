@@ -5,4 +5,5 @@ AboutDialog::AboutDialog(QWidget *parent) :
 {
     //设置为模态对话框
     this->setModal(true);
+
 }

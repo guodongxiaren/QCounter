@@ -317,6 +317,10 @@
    <addaction name="menu"/>
   </widget>
   <action name="action">
+   <property name="icon">
+    <iconset resource="Image.qrc">
+     <normaloff>:/logo/Image/calc-icon.png</normaloff>:/logo/Image/calc-icon.png</iconset>
+   </property>
    <property name="text">
     <string>查看帮助</string>
    </property>
@@ -328,6 +332,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="Image.qrc"/>
+ </resources>
  <connections/>
 </ui>
