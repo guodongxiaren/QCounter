@@ -2,7 +2,7 @@
 QCounter
 ============
 English|[简体中文](#Ch)<br>
-
+[Home](http://guodongxiaren.github.io/QCounter)
 This is a Counter develeped by Qt.More interesting functions will be added gradually. 
 ---
 ##Development Enviroment
@@ -19,7 +19,7 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 QCounter
 =============
 简体中文|[English](#En)<br>
-
+[主页](http://guodongxiaren.github.io/QCounter)
 一个计算器，使用Qt开发，陆续会增加更多功能。
 ---
 ##开发环境
