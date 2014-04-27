@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "aboutdialog.h"
 #include <QDebug>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -344,4 +345,10 @@ void MainWindow::on_btnPer_clicked()
         ui->lineEdit->setText("9");
         complete = false;
     }
+}
+
+void MainWindow::on_action_2_triggered()
+{
+    AboutDialog *ad = new AboutDialog();
+    ad->show();
 }

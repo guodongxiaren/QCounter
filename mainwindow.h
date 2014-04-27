@@ -61,6 +61,8 @@ private slots:
 
     void on_btnPer_clicked();
 
+    void on_action_2_triggered();
+
 private:
     Ui::MainWindow *ui;
     QStack<QChar> expStack;//后缀表达式栈
