@@ -2,7 +2,7 @@
 #define ABOUTDIALOG_H
 
 #include <QDialog>
-
+#include <QLabel>
 class AboutDialog : public QDialog
 {
     Q_OBJECT
@@ -13,6 +13,9 @@ signals:
 
 public slots:
 
+private:
+    QLabel *name;
+    QImage *logo;
 };
 
 #endif // ABOUTDIALOG_H
