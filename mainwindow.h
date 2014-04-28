@@ -59,8 +59,6 @@ private slots:
 
     void on_btnBack_clicked();
 
-    void on_btnPer_clicked();
-
     void on_action_2_triggered();
 
 private:

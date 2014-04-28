@@ -337,18 +337,6 @@ void MainWindow::on_btnBack_clicked()
     ui->lineEdit->setText(s);
 }
 
-void MainWindow::on_btnPer_clicked()
-{
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"9");
-    else
-    {
-        ui->lineEdit->setText("9");
-        complete = false;
-    }
-}
-
 void MainWindow::on_action_2_triggered()
 {
     AboutDialog *ad = new AboutDialog();
