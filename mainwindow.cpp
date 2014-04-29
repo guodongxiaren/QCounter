@@ -318,6 +318,10 @@ void MainWindow::evaluation()
 //等于号的槽函数。
 void MainWindow::on_btnEqual_clicked()
 {
+    //如果还没输入，那么等于号不起作用
+    if(ui->lineEdit->text()=="0")
+        return;
+
     toPostfix();
     evaluation();
     init();
