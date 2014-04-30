@@ -9,7 +9,7 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 ##Development Enviroment
 * Qt5
 * MinGw4.8(Windows7)
-* gcc4.8.2(Ubuntu14.04)
+* gcc4.8.2(Ubuntu14)
 
 <b>Please browse this project's [Wiki](https://github.com/guodongxiaren/QCounter/wiki) for more details.<b>
 <br>
