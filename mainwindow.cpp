@@ -6,14 +6,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    this->setWindowIcon(QIcon("icon.ico"));
+   // setWindowIcon(QIcon("./icon.ico"));
+    //setWindowTitle("QCounter");
     ui->setupUi(this);
     ui->lineEdit->setEnabled(false);
     ui->lineEdit->setAlignment(Qt::AlignRight);//设置显示居右
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     ui->lineEdit->setText("0");//设置初试文本为0
     init();
-
+    //ui->btnSub->setIcon(QIcon("./Image/sub.ico"));
 }
 
 MainWindow::~MainWindow()
