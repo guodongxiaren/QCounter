@@ -2,19 +2,20 @@
 #include "ui_mainwindow.h"
 #include "aboutdialog.h"
 #include <QDebug>
+#include <QDesktopWidget>
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-   // setWindowIcon(QIcon("./icon.ico"));
-    //setWindowTitle("QCounter");
+
+    QDesktopWidget * desktop = QApplication::desktop();
+    move((desktop->width() - this->width())/2,(desktop->height() - this->height())/2);
     ui->setupUi(this);
     ui->lineEdit->setEnabled(false);
     ui->lineEdit->setAlignment(Qt::AlignRight);//设置显示居右
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     ui->lineEdit->setText("0");//设置初试文本为0
     init();
-    //ui->btnSub->setIcon(QIcon("./Image/sub.ico"));
 
 }
 

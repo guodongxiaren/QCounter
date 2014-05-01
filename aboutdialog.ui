@@ -6,52 +6,53 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>278</width>
-    <height>419</height>
+    <width>402</width>
+    <height>289</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTabWidget" name="aboutTab">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>110</y>
-     <width>231</width>
-     <height>291</height>
-    </rect>
-   </property>
-   <property name="currentIndex">
-    <number>1</number>
-   </property>
-   <widget class="QWidget" name="tab_3">
-    <attribute name="title">
-     <string>Page</string>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="tab">
-    <attribute name="title">
-     <string>Tab 1</string>
-    </attribute>
-   </widget>
-   <widget class="QWidget" name="tab_2">
-    <attribute name="title">
-     <string>Tab 2</string>
-    </attribute>
-   </widget>
-  </widget>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);</string>
+  </property>
   <widget class="QLabel" name="logoLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>10</y>
-     <width>111</width>
-     <height>101</height>
+     <x>40</x>
+     <y>0</y>
+     <width>301</width>
+     <height>251</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/Image/calc.png&quot; width=&quot;100&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/logo/Image/calc.png&quot; width=&quot;100&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Version:0.1&lt;br/&gt;Author:Jelly&lt;/span&gt;&lt;/p&gt;&lt;p&gt;QCounter是一个跨平台的开源计算器，使用Qt开发，方便易用。&lt;br/&gt;项目托管于GitHub，提供源码下载。如果你发现有任何建议或意见，可发邮件给我反馈。&lt;br/&gt;我的邮箱：wylrics@163.com&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton">
+   <property name="geometry">
+    <rect>
+     <x>240</x>
+     <y>250</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>My Blog</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_2">
+   <property name="geometry">
+    <rect>
+     <x>70</x>
+     <y>250</y>
+     <width>80</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Website</string>
    </property>
   </widget>
  </widget>
