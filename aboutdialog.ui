@@ -6,53 +6,40 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>402</width>
-    <height>289</height>
+    <width>572</width>
+    <height>263</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(255, 255, 255);</string>
+   <string notr="true"/>
   </property>
-  <widget class="QLabel" name="logoLabel">
+  <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>0</y>
-     <width>301</width>
-     <height>251</height>
+     <x>200</x>
+     <y>10</y>
+     <width>411</width>
+     <height>151</height>
     </rect>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;img src=&quot;:/logo/Image/calc.png&quot; width=&quot;100&quot;/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Version:0.1&lt;br/&gt;Author:Jelly&lt;/span&gt;&lt;/p&gt;&lt;p&gt;QCounter是一个跨平台的开源计算器，使用Qt开发，方便易用。&lt;br/&gt;项目托管于GitHub，提供源码下载。如果你发现有任何建议或意见，可发邮件给我反馈。&lt;br/&gt;我的邮箱：wylrics@163.com&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;QCounter是一个跨平台的开源计算器。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;使用Qt开发，方便易用。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;项目托管于GitHub，提供源码下载。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;如果你发现有任何建议或意见，可发邮件进行反馈。&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:11pt;&quot;&gt;我的邮箱：&lt;/span&gt;&lt;span style=&quot; font-size:11pt; font-weight:600; font-style:italic;&quot;&gt;wylrics@163.com&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>250</y>
-     <width>80</width>
-     <height>24</height>
+     <x>20</x>
+     <y>10</y>
+     <width>151</width>
+     <height>171</height>
     </rect>
    </property>
    <property name="text">
-    <string>My Blog</string>
-   </property>
-  </widget>
-  <widget class="QPushButton" name="pushButton_2">
-   <property name="geometry">
-    <rect>
-     <x>70</x>
-     <y>250</y>
-     <width>80</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Website</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;img src=&quot;:/logo/Image/calc.png&quot;/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
  </widget>
