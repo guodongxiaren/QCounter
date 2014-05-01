@@ -346,5 +346,6 @@ void MainWindow::on_btnBack_clicked()
 void MainWindow::on_action_2_triggered()
 {
     AboutDialog *ad = new AboutDialog();
+    ad->setWindowTitle("About QCounter");
     ad->show();
 }

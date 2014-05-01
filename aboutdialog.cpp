@@ -6,6 +6,7 @@ AboutDialog::AboutDialog(QWidget *parent) :
     ui(new Ui::AboutDialog)
 {
     setModal(true);
+    //setWindowTitle("About QCounter");
     ui->setupUi(this);
    // ui->logoLabel->show();
 }
