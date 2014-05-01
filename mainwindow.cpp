@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->setText("0");//设置初试文本为0
     init();
     //ui->btnSub->setIcon(QIcon("./Image/sub.ico"));
+
 }
 
 MainWindow::~MainWindow()

@@ -19,7 +19,8 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     aboutdialog.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    aboutdialog.ui
 
 RESOURCES += \
     Image.qrc
