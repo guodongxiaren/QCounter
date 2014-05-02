@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     ui->lineEdit->setText("0");//设置初试文本为0
     //fist connect,next init
-    connect(this,SIGNAL(enOpBtn(bool)),SLOT(OpBtn(bool)));
+    connect(this,SIGNAL(enOpBtn(bool)),SLOT(opBtn(bool)));
     init();
 }
 
@@ -24,6 +24,9 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+/*
+ *public function
+ */
 //初始化操作.不仅开头调用，每次计算完结果都会调用。
 void MainWindow::init()
 {
@@ -35,132 +38,75 @@ void MainWindow::init()
     complete=true;
     emit enOpBtn(false);
 }
-/*
- *SLOT function
- */
-void MainWindow::OpBtn(bool enable)
-{
-    ui->btnMuti->setEnabled(enable);
-}
-////////////////////////////////////
-void MainWindow::on_btn0_clicked()
+void MainWindow::digitBtn(char ch)
 {
     QString s = ui->lineEdit->text();
     if(!complete)
-        ui->lineEdit->setText(s+"0");
+        ui->lineEdit->setText(s+ch);
     else
     {
-        ui->lineEdit->setText("0");
+        ui->lineEdit->setText(QString(ch));
         complete = false;
     }
+}
+/*
+ *SLOT function
+ */
+void MainWindow::opBtn(bool enable)
+{
+    ui->btnMuti->setEnabled(enable);
+}
+
+////////////////////////////////////
+void MainWindow::on_btn0_clicked()
+{
+    digitBtn('0');
 }
 
 void MainWindow::on_btn1_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"1");
-    else
-    {
-        ui->lineEdit->setText("1");
-        complete = false;
-    }
+    digitBtn('1');
+
 }
 
 void MainWindow::on_btn2_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"2");
-    else
-    {
-        ui->lineEdit->setText("2");
-        complete = false;
-    }
+    digitBtn('2');
 }
 
 void MainWindow::on_btn3_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"3");
-    else
-    {
-        ui->lineEdit->setText("3");
-        complete = false;
-    }
+    digitBtn('3');
 }
 
 void MainWindow::on_btn4_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"4");
-    else
-    {
-        ui->lineEdit->setText("4");
-        complete = false;
-    }
+    digitBtn('4');
 }
 
 void MainWindow::on_btn5_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"5");
-    else
-    {
-        ui->lineEdit->setText("5");
-        complete = false;
-    }
+    digitBtn('5');
 }
 
 void MainWindow::on_btn6_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"6");
-    else
-    {
-        ui->lineEdit->setText("6");
-        complete = false;
-    }
+    digitBtn('6');
 }
 
 void MainWindow::on_btn7_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"7");
-    else
-    {
-        ui->lineEdit->setText("7");
-        complete = false;
-    }
+    digitBtn('7');
 }
 
 void MainWindow::on_btn8_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"8");
-    else
-    {
-        ui->lineEdit->setText("8");
-        complete = false;
-    }
+    digitBtn('8');
 }
 
 void MainWindow::on_btn9_clicked()
 {
-    QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"9");
-    else
-    {
-        ui->lineEdit->setText("9");
-        complete = false;
-    }
+    digitBtn('9');
 }
 
 void MainWindow::on_btnDot_clicked()

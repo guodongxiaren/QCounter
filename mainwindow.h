@@ -18,10 +18,11 @@ public:
     int getLevel(const QChar& oper);//得到运算符等级
     void toPostfix();//转换成后缀表达式
     void evaluation();//求值
+    void digitBtn(char ch);
 signals:
     void enOpBtn(bool enable);
 private slots:
-    void OpBtn(bool enable);
+    void opBtn(bool enable);
 
     void on_btn0_clicked();
     void on_btn1_clicked();
