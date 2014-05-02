@@ -15,8 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->setAlignment(Qt::AlignRight);//设置显示居右
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     ui->lineEdit->setText("0");//设置初试文本为0
+    //fist connect,next init
+    connect(this,SIGNAL(enOpBtn(bool)),SLOT(OpBtn(bool)));
     init();
-
 }
 
 MainWindow::~MainWindow()
@@ -32,7 +33,16 @@ void MainWindow::init()
         opStack.clear();
     opStack.push('#');
     complete=true;
+    emit enOpBtn(false);
 }
+/*
+ *SLOT function
+ */
+void MainWindow::OpBtn(bool enable)
+{
+    ui->btnMuti->setEnabled(enable);
+}
+////////////////////////////////////
 void MainWindow::on_btn0_clicked()
 {
     QString s = ui->lineEdit->text();

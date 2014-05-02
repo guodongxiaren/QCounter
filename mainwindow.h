@@ -18,47 +18,33 @@ public:
     int getLevel(const QChar& oper);//得到运算符等级
     void toPostfix();//转换成后缀表达式
     void evaluation();//求值
+signals:
+    void enOpBtn(bool enable);
 private slots:
+    void OpBtn(bool enable);
+
     void on_btn0_clicked();
-
     void on_btn1_clicked();
-
     void on_btn2_clicked();
-
     void on_btn3_clicked();
-
     void on_btn4_clicked();
-
     void on_btn5_clicked();
-
     void on_btn6_clicked();
-
     void on_btn7_clicked();
-
     void on_btn8_clicked();
-
     void on_btn9_clicked();
 
     void on_btnDot_clicked();
-
     void on_btnAdd_clicked();
-
     void on_btnSub_clicked();
-
     void on_btnMuti_clicked();
-
     void on_btnDivi_clicked();
-
     void on_btnEqual_clicked();
-
     void on_btnLeft_clicked();
-
     void on_btnRight_clicked();
-
     void on_btnClear_clicked();
 
     void on_btnBack_clicked();
-
     void on_action_2_triggered();
 
 private:
