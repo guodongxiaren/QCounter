@@ -182,10 +182,10 @@
    <widget class="QPushButton" name="btnEqual">
     <property name="geometry">
      <rect>
-      <x>210</x>
-      <y>70</y>
-      <width>41</width>
-      <height>31</height>
+      <x>160</x>
+      <y>210</y>
+      <width>91</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="text">
@@ -195,8 +195,8 @@
    <widget class="QPushButton" name="btnMuti">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>110</y>
+      <x>210</x>
+      <y>70</y>
       <width>41</width>
       <height>31</height>
      </rect>
@@ -222,9 +222,9 @@
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>210</y>
-      <width>91</width>
-      <height>51</height>
+      <y>110</y>
+      <width>41</width>
+      <height>31</height>
      </rect>
     </property>
     <property name="text">
@@ -306,7 +306,7 @@
      <x>0</x>
      <y>0</y>
      <width>261</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -314,28 +314,26 @@
      <string>帮助</string>
     </property>
     <addaction name="action"/>
-    <addaction name="action_2"/>
+    <addaction name="action_about"/>
    </widget>
    <addaction name="menu"/>
   </widget>
   <action name="action">
    <property name="icon">
-    <iconset resource="Image.qrc">
+    <iconset>
      <normaloff>:/logo/Image/calc-icon.png</normaloff>:/logo/Image/calc-icon.png</iconset>
    </property>
    <property name="text">
     <string>查看帮助</string>
    </property>
   </action>
-  <action name="action_2">
+  <action name="action_about">
    <property name="text">
     <string>关于计算器</string>
    </property>
   </action>
  </widget>
  <layoutdefault spacing="2" margin="7"/>
- <resources>
-  <include location="Image.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

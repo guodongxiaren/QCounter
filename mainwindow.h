@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 #include <QStack>
+const int INIT = 0;
+const int DIGIT = 1;
+const int OPERA = 2;
+const int LEFT = 3;
 namespace Ui {
 class MainWindow;
 }
@@ -20,9 +24,10 @@ public:
     void evaluation();//求值
     void digitBtn(char ch);
 signals:
-    void enOpBtn(bool enable);
+    void whichBtn(int type);
 private slots:
-    void opBtn(bool enable);
+    void enableOp(int type);
+    void enableLeft(int type);
 
     void on_btn0_clicked();
     void on_btn1_clicked();
@@ -46,7 +51,7 @@ private slots:
     void on_btnClear_clicked();
 
     void on_btnBack_clicked();
-    void on_action_2_triggered();
+    void on_action_about_triggered();
 
 private:
     Ui::MainWindow *ui;

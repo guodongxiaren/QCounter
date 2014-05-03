@@ -16,7 +16,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     ui->lineEdit->setText("0");//设置初试文本为0
     //fist connect,next init
-    connect(this,SIGNAL(enOpBtn(bool)),SLOT(opBtn(bool)));
+    connect(this,&MainWindow::whichBtn,&MainWindow::enableOp);
+    connect(this,&MainWindow::whichBtn,&MainWindow::enableLeft);
     init();
 }
 
@@ -36,7 +37,7 @@ void MainWindow::init()
         opStack.clear();
     opStack.push('#');
     complete=true;
-    emit enOpBtn(false);
+    emit whichBtn(INIT);
 }
 void MainWindow::digitBtn(char ch)
 {
@@ -48,17 +49,43 @@ void MainWindow::digitBtn(char ch)
         ui->lineEdit->setText(QString(ch));
         complete = false;
     }
-    emit enOpBtn(true);
+    emit whichBtn(DIGIT);
 }
 /*
  *SLOT function
  */
-void MainWindow::opBtn(bool enable)
+void MainWindow::enableOp(int type)
 {
+    bool enable = false;
+    switch(type)
+    {
+    case DIGIT:enable = true;
+        break;
+    case INIT:
+    case OPERA:
+    case LEFT:enable = false;
+        break;
+    default:return;
+    }
     ui->btnMuti->setEnabled(enable);
     ui->btnDivi->setEnabled(enable);
+    ui->btnAdd->setEnabled(enable);
+    ui->btnSub->setEnabled(enable);
 }
-
+void MainWindow::enableLeft(int type)
+{
+    bool enable = false;
+    switch(type)
+    {
+    case DIGIT:enable = false;
+        break;
+    case INIT:
+    case OPERA:enable = true;
+        break;
+    default:return;
+    }
+    ui->btnLeft->setEnabled(enable);
+}
 ////////////////////////////////////
 void MainWindow::on_btn0_clicked()
 {
@@ -120,6 +147,7 @@ void MainWindow::on_btnDot_clicked()
 }
 ///////////////////////////////////////////////////
 //加号和减号应做特殊处理。因为也可以理解为正负号
+///////////////////////////////////////////////////
 void MainWindow::on_btnAdd_clicked()
 {
     QString s = ui->lineEdit->text();
@@ -127,6 +155,7 @@ void MainWindow::on_btnAdd_clicked()
         ui->lineEdit->setText(s+"+");
     else
         ui->lineEdit->setText("+");
+    emit whichBtn(OPERA);
 }
 
 void MainWindow::on_btnSub_clicked()
@@ -136,6 +165,7 @@ void MainWindow::on_btnSub_clicked()
         ui->lineEdit->setText(s+"-");
     else
         ui->lineEdit->setText("-");
+    emit whichBtn(OPERA);
 }
 //////////////////////////////////////////////////////
 void MainWindow::on_btnMuti_clicked()
@@ -148,6 +178,7 @@ void MainWindow::on_btnMuti_clicked()
         ui->lineEdit->setText("*");
         complete = false;
     }
+    emit whichBtn(OPERA);
 }
 
 void MainWindow::on_btnDivi_clicked()
@@ -155,7 +186,9 @@ void MainWindow::on_btnDivi_clicked()
     QString s = ui->lineEdit->text();
     if(!complete)
         ui->lineEdit->setText(s+"/");
+    emit whichBtn(OPERA);
 }
+////////////////////////////////////////////
 void MainWindow::on_btnLeft_clicked()
 {
     QString s = ui->lineEdit->text();
@@ -166,7 +199,7 @@ void MainWindow::on_btnLeft_clicked()
         ui->lineEdit->setText("(");
         complete = false;
     }
-    emit opBtn(false);
+    emit whichBtn(LEFT);
 }
 
 void MainWindow::on_btnRight_clicked()
@@ -304,7 +337,7 @@ void MainWindow::on_btnBack_clicked()
     ui->lineEdit->setText(s);
 }
 
-void MainWindow::on_action_2_triggered()
+void MainWindow::on_action_about_triggered()
 {
     AboutDialog *ad = new AboutDialog();
     ad->setWindowTitle("About QCounter");
