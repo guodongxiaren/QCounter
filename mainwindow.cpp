@@ -48,6 +48,7 @@ void MainWindow::digitBtn(char ch)
         ui->lineEdit->setText(QString(ch));
         complete = false;
     }
+    emit enOpBtn(true);
 }
 /*
  *SLOT function
@@ -55,6 +56,7 @@ void MainWindow::digitBtn(char ch)
 void MainWindow::opBtn(bool enable)
 {
     ui->btnMuti->setEnabled(enable);
+    ui->btnDivi->setEnabled(enable);
 }
 
 ////////////////////////////////////
@@ -164,6 +166,7 @@ void MainWindow::on_btnLeft_clicked()
         ui->lineEdit->setText("(");
         complete = false;
     }
+    emit opBtn(false);
 }
 
 void MainWindow::on_btnRight_clicked()
@@ -290,6 +293,7 @@ void MainWindow::on_btnEqual_clicked()
 void MainWindow::on_btnClear_clicked()
 {
     init();
+    ui->lineEdit->setText("0");
 }
 
 
