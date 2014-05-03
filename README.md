@@ -29,4 +29,4 @@ QCounter
 * MinGw4.8(Windows7)
 * gcc4.8.2(Ubuntu14)
 
-<b>更多详情请看本项目[Wiki](https://github.com/guodongxiaren/QCounter/中文首页)。<b>
+<b>更多详情请看本项目[Wiki](https://github.com/guodongxiaren/QCounter/wiki/中文首页)。<b>
