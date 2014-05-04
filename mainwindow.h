@@ -25,9 +25,12 @@ public:
     void digitBtn(char ch);
 signals:
     void whichBtn(int type);
+    void leftChange();
 private slots:
     void enableOp(int type);
     void enableLeft(int type);
+    void enableRight();
+    void enableEqual(int type);
 
     void on_btn0_clicked();
     void on_btn1_clicked();
@@ -59,6 +62,7 @@ private:
     QStack<QChar> opStack;//运算符栈
     QString postfix;//存储后缀表达式
     bool complete;//表达式是否计算完成
+    int lefts;
 };
 
 #endif // MAINWINDOW_H

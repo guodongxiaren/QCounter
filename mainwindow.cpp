@@ -15,9 +15,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->lineEdit->setAlignment(Qt::AlignRight);//设置显示居右
     ui->lineEdit->setStyleSheet("font-size:18px");//设置字体大小为18px
     ui->lineEdit->setText("0");//设置初试文本为0
+
+    lefts=0;
     //fist connect,next init
     connect(this,&MainWindow::whichBtn,&MainWindow::enableOp);
     connect(this,&MainWindow::whichBtn,&MainWindow::enableLeft);
+    connect(this,&MainWindow::whichBtn,&MainWindow::enableEqual);
+    connect(this,&MainWindow::leftChange,&MainWindow::enableRight);
     init();
 }
 
@@ -38,6 +42,7 @@ void MainWindow::init()
     opStack.push('#');
     complete=true;
     emit whichBtn(INIT);
+    ui->btnRight->setEnabled(false);
 }
 void MainWindow::digitBtn(char ch)
 {
@@ -77,7 +82,7 @@ void MainWindow::enableLeft(int type)
     bool enable = false;
     switch(type)
     {
-    case DIGIT:enable = false;
+    case DIGIT:
         break;
     case INIT:
     case OPERA:enable = true;
@@ -85,6 +90,28 @@ void MainWindow::enableLeft(int type)
     default:return;
     }
     ui->btnLeft->setEnabled(enable);
+}
+void MainWindow::enableRight()
+{
+    if(!lefts)
+        ui->btnRight->setEnabled(false);
+    else
+        ui->btnRight->setEnabled(true);
+}
+void MainWindow::enableEqual(int type)
+{
+    bool enable = false;
+    switch(type)
+    {
+    case OPERA:
+    case LEFT:
+        break;
+    case DIGIT:
+        enable = true;
+        break;
+    default:return;
+    }
+    ui->btnEqual->setEnabled(enable);
 }
 ////////////////////////////////////
 void MainWindow::on_btn0_clicked()
@@ -200,6 +227,8 @@ void MainWindow::on_btnLeft_clicked()
         complete = false;
     }
     emit whichBtn(LEFT);
+    lefts++;
+    emit leftChange();
 }
 
 void MainWindow::on_btnRight_clicked()
@@ -207,6 +236,8 @@ void MainWindow::on_btnRight_clicked()
     QString s = ui->lineEdit->text();
     if(!complete)
         ui->lineEdit->setText(s+")");
+    lefts--;
+    emit leftChange();
 }
 //得到运算符的优先级
 int MainWindow::getLevel(const QChar &oper)
