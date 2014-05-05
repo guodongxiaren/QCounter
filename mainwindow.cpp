@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,&MainWindow::whichBtn,&MainWindow::enableOp);
     connect(this,&MainWindow::whichBtn,&MainWindow::enableLeft);
     connect(this,&MainWindow::whichBtn,&MainWindow::enableEqual);
-    connect(this,&MainWindow::leftChange,&MainWindow::enableRight);
+    connect(this,&MainWindow::whichBtn,&MainWindow::enableRight);
     init();
 }
 
@@ -42,7 +42,6 @@ void MainWindow::init()
     opStack.push('#');
     complete=true;
     emit whichBtn(INIT);
-    ui->btnRight->setEnabled(false);
 }
 void MainWindow::digitBtn(char ch)
 {
@@ -91,12 +90,23 @@ void MainWindow::enableLeft(int type)
     }
     ui->btnLeft->setEnabled(enable);
 }
-void MainWindow::enableRight()
+void MainWindow::enableRight(int type)
 {
-    if(!lefts)
-        ui->btnRight->setEnabled(false);
-    else
-        ui->btnRight->setEnabled(true);
+    bool enable = false;
+    switch(type)
+    {
+    case INIT:
+    case OPERA:
+        break;
+    case LEFT:enable = true;
+    case RIGHT:
+    case DIGIT:
+        if(lefts)
+            enable = true;
+        break;
+    default:return;
+    }
+    ui->btnRight->setEnabled(enable);
 }
 void MainWindow::enableEqual(int type)
 {
@@ -228,7 +238,6 @@ void MainWindow::on_btnLeft_clicked()
     }
     emit whichBtn(LEFT);
     lefts++;
-    emit leftChange();
 }
 
 void MainWindow::on_btnRight_clicked()
@@ -237,7 +246,7 @@ void MainWindow::on_btnRight_clicked()
     if(!complete)
         ui->lineEdit->setText(s+")");
     lefts--;
-    emit leftChange();
+    emit whichBtn(RIGHT);
 }
 //得到运算符的优先级
 int MainWindow::getLevel(const QChar &oper)

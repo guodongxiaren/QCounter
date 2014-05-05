@@ -7,6 +7,7 @@ const int INIT = 0;
 const int DIGIT = 1;
 const int OPERA = 2;
 const int LEFT = 3;
+const int RIGHT = 4;
 namespace Ui {
 class MainWindow;
 }
@@ -25,11 +26,10 @@ public:
     void digitBtn(char ch);
 signals:
     void whichBtn(int type);
-    void leftChange();
 private slots:
     void enableOp(int type);
     void enableLeft(int type);
-    void enableRight();
+    void enableRight(int type);
     void enableEqual(int type);
 
     void on_btn0_clicked();

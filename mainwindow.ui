@@ -313,7 +313,6 @@
     <property name="title">
      <string>帮助</string>
     </property>
-    <addaction name="action"/>
     <addaction name="action_about"/>
    </widget>
    <addaction name="menu"/>
