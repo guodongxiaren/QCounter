@@ -198,10 +198,7 @@ void MainWindow::on_btnAdd_clicked()
 void MainWindow::on_btnSub_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
-        ui->lineEdit->setText(s+"-");
-    else
-        ui->lineEdit->setText("-");
+    ui->lineEdit->setText(s+"-");
     emit whichBtn(OPERA);
 }
 //////////////////////////////////////////////////////
@@ -215,8 +212,7 @@ void MainWindow::on_btnMuti_clicked()
 void MainWindow::on_btnDivi_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"/");
+    ui->lineEdit->setText(s+"/");
     emit whichBtn(OPERA);
 }
 ////////////////////////////////////////////
