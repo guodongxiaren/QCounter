@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(this,&MainWindow::whichBtn,&MainWindow::enableLeft);
     connect(this,&MainWindow::whichBtn,&MainWindow::enableEqual);
     connect(this,&MainWindow::whichBtn,&MainWindow::enableRight);
+    connect(this,&MainWindow::whichBtn,&MainWindow::enableDigit);
     init();
 }
 
@@ -58,11 +59,29 @@ void MainWindow::digitBtn(char ch)
 /*
  *SLOT function
  */
+void MainWindow::enableDigit(int type)
+{
+    bool enable=true;
+    if(RIGHT==type)
+        enable=false;
+    ui->btn0->setEnabled(enable);
+    ui->btn1->setEnabled(enable);
+    ui->btn2->setEnabled(enable);
+    ui->btn3->setEnabled(enable);
+    ui->btn4->setEnabled(enable);
+    ui->btn5->setEnabled(enable);
+    ui->btn6->setEnabled(enable);
+    ui->btn7->setEnabled(enable);
+    ui->btn8->setEnabled(enable);
+    ui->btn9->setEnabled(enable);
+    ui->btnDot->setEnabled(enable);
+}
 void MainWindow::enableOp(int type)
 {
     bool enable = false;
     switch(type)
     {
+    case RIGHT:
     case DIGIT:enable = true;
         break;
     case INIT:
@@ -81,9 +100,11 @@ void MainWindow::enableLeft(int type)
     bool enable = false;
     switch(type)
     {
+    case RIGHT:
     case DIGIT:
         break;
     case INIT:
+    case LEFT:
     case OPERA:enable = true;
         break;
     default:return;
@@ -116,6 +137,7 @@ void MainWindow::enableEqual(int type)
     case OPERA:
     case LEFT:
         break;
+    case RIGHT:
     case DIGIT:
         enable = true;
         break;
@@ -188,20 +210,14 @@ void MainWindow::on_btnDot_clicked()
 void MainWindow::on_btnAdd_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
-        ui->lineEdit->setText(s+"+");
-    else
-        ui->lineEdit->setText("+");
+    ui->lineEdit->setText(s+"+");
     emit whichBtn(OPERA);
 }
 
 void MainWindow::on_btnSub_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(s!="0")
-        ui->lineEdit->setText(s+"-");
-    else
-        ui->lineEdit->setText("-");
+    ui->lineEdit->setText(s+"-");
     emit whichBtn(OPERA);
 }
 //////////////////////////////////////////////////////
@@ -215,8 +231,7 @@ void MainWindow::on_btnMuti_clicked()
 void MainWindow::on_btnDivi_clicked()
 {
     QString s = ui->lineEdit->text();
-    if(!complete)
-        ui->lineEdit->setText(s+"/");
+    ui->lineEdit->setText(s+"/");
     emit whichBtn(OPERA);
 }
 ////////////////////////////////////////////

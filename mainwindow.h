@@ -27,6 +27,7 @@ public:
 signals:
     void whichBtn(int type);
 private slots:
+    void enableDigit(int type);
     void enableOp(int type);
     void enableLeft(int type);
     void enableRight(int type);
