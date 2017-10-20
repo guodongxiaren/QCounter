@@ -1,12 +1,15 @@
 <a name="En"/>
 QCounter
 ============
-English|[简体中文](#Ch)<br>
-##[Home](http://guodongxiaren.github.io/QCounter)
+
+English|[简体中文](#Ch)
+
+## [Home](http://guodongxiaren.github.io/QCounter)
 
 This is a Counter develeped by Qt.More interesting functions will be added gradually. 
 ---
-##Development Enviroment
+
+## Development Enviroment
 * Qt5
 * MinGw4.8(Windows7)
 * gcc4.8.2(Ubuntu14)
@@ -19,12 +22,15 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 <a name="Ch"/>
 QCounter
 =============
-简体中文|[English](#En)<br>
+
+简体中文|[English](#En)
+
 [项目主页](http://guodongxiaren.github.io/QCounter)
 
 一个计算器，使用Qt开发，陆续会增加更多功能。
 ---
-##开发环境
+
+## 开发环境
 * Qt5 
 * MinGw4.8(Windows7)
 * gcc4.8.2(Ubuntu14)
