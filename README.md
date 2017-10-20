@@ -1,4 +1,5 @@
 <a name="En"/>
+
 QCounter
 ============
 
@@ -20,6 +21,7 @@ This is a Counter develeped by Qt.More interesting functions will be added gradu
 <br>
 
 <a name="Ch"/>
+
 QCounter
 =============
 
